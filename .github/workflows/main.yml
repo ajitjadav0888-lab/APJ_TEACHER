@@ -26,33 +26,20 @@ jobs:
       - name: Extract Android project ZIP
         run: |
           unzip -o APJ_V1_0_Android_Project_RC.zip -d apj_project
-          echo "Extracted project:"
-          find apj_project -maxdepth 5 -type f | head -150
 
-      - name: Find Gradle project
+      - name: Build APK with installed Gradle
         run: |
-          echo "Searching for Gradle project..."
-          find apj_project -name "settings.gradle" -o -name "settings.gradle.kts"
+          cd apj_project/apj_build/android
 
-      - name: Build Android APK
-        run: |
-          PROJECT_DIR=$(dirname "$(find apj_project -name settings.gradle -o -name settings.gradle.kts | head -1)")
-          echo "Android project directory: $PROJECT_DIR"
-          cd "$PROJECT_DIR"
+          echo "Android project:"
+          ls -la
 
-          if [ -f "./gradlew" ]; then
-            chmod +x ./gradlew
-            ./gradlew assembleRelease
-          else
-            echo "ERROR: gradlew not found"
-            echo "Project contents:"
-            ls -la
-            exit 1
-          fi
+          gradle --version
+          gradle assembleRelease --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: APJ-release-APK
           path: |
-            apj_project/**/build/outputs/apk/release/*.apk
+            apj_project/apj_build/android/app/build/outputs/apk/release/*.apk
