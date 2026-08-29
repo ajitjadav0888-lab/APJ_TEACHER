@@ -11,24 +11,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
+      - name: Extract Android project ZIP
+        run: |
+          unzip -o APJ_V1_0_Android_Project_RC.zip -d apj_project
+          echo "Extracted files:"
+          find apj_project -maxdepth 4 -type f | head -100
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Find Android project
+        run: |
+          echo "Searching for Gradle project..."
+          find apj_project -name "settings.gradle" -o -name "settings.gradle.kts"
 
-      - name: Build APK
-        working-directory: android
-        run: chmod +x gradlew && ./gradlew assembleRelease
+      - name: Build Android APK
+        run: |
+          PROJECT_DIR=$(dirname "$(find apj_project -name settings.gradle -o -name settings.gradle.kts | head -1)")
+          echo "Android project: $PROJECT_DIR"
+          cd "$PROJECT_DIR"
+
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew
+            ./gradlew assembleRelease
+          else
+            echo "ERROR: gradlew not found"
+            exit 1
+          fi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: APJ-release-APK
-          path: android/**/build/outputs/apk/release/*.apk
+          path: |
+            apj_project/**/build/outputs/apk/release/*.apk
