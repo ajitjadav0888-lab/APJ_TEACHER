@@ -14,13 +14,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Extract Android project ZIP
         run: |
           unzip -o APJ_V1_0_Android_Project_RC.zip -d apj_project
-          echo "Extracted files:"
-          find apj_project -maxdepth 4 -type f | head -100
+          echo "Extracted project:"
+          find apj_project -maxdepth 5 -type f | head -150
 
-      - name: Find Android project
+      - name: Find Gradle project
         run: |
           echo "Searching for Gradle project..."
           find apj_project -name "settings.gradle" -o -name "settings.gradle.kts"
@@ -28,7 +37,7 @@ jobs:
       - name: Build Android APK
         run: |
           PROJECT_DIR=$(dirname "$(find apj_project -name settings.gradle -o -name settings.gradle.kts | head -1)")
-          echo "Android project: $PROJECT_DIR"
+          echo "Android project directory: $PROJECT_DIR"
           cd "$PROJECT_DIR"
 
           if [ -f "./gradlew" ]; then
@@ -36,6 +45,8 @@ jobs:
             ./gradlew assembleRelease
           else
             echo "ERROR: gradlew not found"
+            echo "Project contents:"
+            ls -la
             exit 1
           fi
 
