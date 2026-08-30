@@ -1,0 +1,31 @@
+kind = "api"
+previewPath = "/"
+title = "APJ Teacher API"
+version = "1.0.0"
+id = "3B4_FFSkEVBkAeYMFRJ2e"
+
+[[services]]
+localPort = 8000
+name = "API Server"
+paths = ["/"]
+
+[services.development]
+run = "cd ../.. && cd apj_build/backend && exec python -m uvicorn app:app --host 0.0.0.0 --port $PORT"
+
+[services.production]
+
+[services.production.build]
+args = ["python", "-m", "compileall", "-q", "apj_build/backend"]
+
+[services.production.build.env]
+PYTHONUNBUFFERED = "1"
+
+[services.production.run]
+args = ["sh", "-c", "cd apj_build/backend && exec python -m uvicorn app:app --host 0.0.0.0 --port \"$PORT\""]
+
+[services.production.run.env]
+APJ_ENV = "production"
+PYTHONUNBUFFERED = "1"
+
+[services.production.health.startup]
+path = "/health"
