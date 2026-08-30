@@ -5,7 +5,7 @@ version = "1.0.0"
 id = "3B4_FFSkEVBkAeYMFRJ2e"
 
 [[services]]
-localPort = 8080
+localPort = 8000
 name = "API Server"
 paths = ["/"]
 
