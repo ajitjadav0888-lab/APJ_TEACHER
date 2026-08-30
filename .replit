@@ -3,6 +3,8 @@ modules = ["nodejs-24", "python-base-3.13"]
 [deployment]
 router = "application"
 deploymentTarget = "autoscale"
+build = "python -m compileall -q apj_build/backend"
+run = "cd apj_build/backend && exec python -m uvicorn app:app --host 0.0.0.0 --port 8000"
 
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
