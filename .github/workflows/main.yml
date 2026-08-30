@@ -1,4 +1,4 @@
-name: APJ Android Build
+name: APJ Android Debug Build
 
 on:
   workflow_dispatch:
@@ -27,19 +27,13 @@ jobs:
         run: |
           unzip -o APJ_V1_0_Android_Project_RC.zip -d apj_project
 
-      - name: Build APK with installed Gradle
+      - name: Build Debug APK
         run: |
           cd apj_project/apj_build/android
+          gradle assembleDebug --no-daemon
 
-          echo "Android project:"
-          ls -la
-
-          gradle --version
-          gradle assembleRelease --no-daemon
-
-      - name: Upload APK
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: APJ-release-APK
-          path: |
-            apj_project/apj_build/android/app/build/outputs/apk/release/*.apk
+          name: APJ-debug-APK
+          path: apj_project/apj_build/android/app/build/outputs/apk/debug/*.apk
