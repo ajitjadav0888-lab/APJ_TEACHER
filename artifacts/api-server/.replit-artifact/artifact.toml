@@ -10,7 +10,7 @@ name = "API Server"
 paths = ["/"]
 
 [services.development]
-run = "cd ../../apj_build/backend && exec python -m uvicorn app:app --host 0.0.0.0 --port $PORT"
+run = "cd ../.. && cd apj_build/backend && exec python -m uvicorn app:app --host 0.0.0.0 --port $PORT"
 
 [services.production]
 
