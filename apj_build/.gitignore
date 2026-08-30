@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+apj.db
+.env
+node_modules/
+dist/

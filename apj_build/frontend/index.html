@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="gu">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1565c0"><title>APJ શિક્ષક</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4f7fb;color:#172033}header{background:#1565c0;color:#fff;padding:18px 20px;position:sticky;top:0;z-index:2}header h1{margin:0;font-size:24px}header p{margin:4px 0 0;opacity:.9}main{max-width:1100px;margin:auto;padding:18px}.login,.dashboard{background:#fff;border-radius:18px;padding:20px;box-shadow:0 4px 18px #00000012;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.card{border:1px solid #e2e7ef;border-radius:14px;padding:16px;background:#fff}.icon{font-size:28px}.card h3{margin:8px 0 4px}.muted{color:#667085;font-size:14px}input{width:100%;padding:12px;border:1px solid #ccd3df;border-radius:10px;margin:6px 0}button{border:0;border-radius:10px;padding:12px 16px;background:#1565c0;color:#fff;font-weight:600;margin-top:8px}.secondary{background:#eef4ff;color:#1565c0}.hidden{display:none}.status{margin-top:10px;font-size:14px}.toprow{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+</style></head>
+<body>
+<header><h1>📚 APJ શિક્ષક</h1><p>શાળા વ્યવસ્થાપન અને શિક્ષણ સહાયક</p></header>
+<main>
+<section id="login" class="login"><h2>લૉગિન</h2><p class="muted">તમારા શાળા સર્વરના credentialsથી પ્રવેશ કરો.</p><input id="api" placeholder="API URL (દા.ત. https://example.com)" value=""><input id="email" placeholder="Email / Username"><input id="password" type="password" placeholder="Password"><button onclick="login()">લૉગિન</button><div id="loginStatus" class="status"></div></section>
+<section id="dashboard" class="dashboard hidden"><div class="toprow"><div><h2 style="margin:0">Teacher Dashboard</h2><span id="welcome" class="muted"></span></div><button class="secondary" onclick="logout()">Logout</button></div><div class="grid" style="margin-top:16px">
+<div class="card"><div class="icon">👨‍🎓</div><h3>વિદ્યાર્થીઓ</h3><div class="muted">Student management</div></div>
+<div class="card"><div class="icon">🏫</div><h3>વર્ગો</h3><div class="muted">Classes</div></div>
+<div class="card"><div class="icon">📝</div><h3>હાજરી</h3><div class="muted">Attendance</div></div>
+<div class="card"><div class="icon">📚</div><h3>ગૃહકાર્ય</h3><div class="muted">Homework</div></div>
+<div class="card"><div class="icon">🧪</div><h3>પરીક્ષા</h3><div class="muted">Exams & marks</div></div>
+<div class="card"><div class="icon">📊</div><h3>પરિણામ</h3><div class="muted">Results & reports</div></div>
+<div class="card"><div class="icon">💰</div><h3>ફી</h3><div class="muted">Fees</div></div>
+<div class="card"><div class="icon">📖</div><h3>લાઇબ્રેરી</h3><div class="muted">Issue / Return</div></div>
+<div class="card"><div class="icon">🗓️</div><h3>સમયપત્રક</h3><div class="muted">Timetable</div></div>
+<div class="card"><div class="icon">📄</div><h3>દસ્તાવેજો</h3><div class="muted">Documents</div></div>
+<div class="card"><div class="icon">🔔</div><h3>નોટિફિકેશન</h3><div class="muted">Notifications</div></div>
+<div class="card"><div class="icon">⚙️</div><h3>સેટિંગ્સ</h3><div class="muted">Settings</div></div>
+</div><div id="dashStatus" class="status"></div></section>
+</main>
+<script>
+let base='',token='';
+function norm(v){return v.replace(/\/$/,'')}
+async function login(){const s=document.getElementById('loginStatus');base=norm(document.getElementById('api').value.trim());if(!base){s.textContent='⚠️ API URL આપો';return}try{const r=await fetch(base+'/api/v1/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('email').value,password:document.getElementById('password').value})});const d=await r.json();if(!r.ok){s.textContent='❌ '+(d.detail||'Login failed');return}token=d.access_token||'';localStorage.setItem('apj_token',token);localStorage.setItem('apj_api',base);document.getElementById('login').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');document.getElementById('welcome').textContent='સુરક્ષિત રીતે લૉગિન થયું';s.textContent=''}catch(e){s.textContent='⚠️ Server સાથે જોડાણ થયું નથી'}}
+function logout(){token='';localStorage.removeItem('apj_token');document.getElementById('dashboard').classList.add('hidden');document.getElementById('login').classList.remove('hidden')}
+(function(){base=norm(localStorage.getItem('apj_api')||'');token=localStorage.getItem('apj_token')||'';if(token&&base){document.getElementById('login').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden')}})();
+</script></body></html>
