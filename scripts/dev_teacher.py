@@ -94,8 +94,16 @@ def set_password(user_id: int) -> None:
                 "development test teacher."
             )
 
-        password = getpass.getpass("New test password (hidden): ")
-        confirmation = getpass.getpass("Confirm test password (hidden): ")
+        if sys.stdin.isatty():
+            password = getpass.getpass("New test password (hidden): ")
+            confirmation = getpass.getpass("Confirm test password (hidden): ")
+        else:
+            password = sys.stdin.readline().rstrip("\r\n")
+            confirmation = sys.stdin.readline().rstrip("\r\n")
+            if not password or not confirmation:
+                raise SystemExit(
+                    "Non-interactive use requires two password lines on stdin."
+                )
         if len(password) < 8:
             raise SystemExit("Password must contain at least 8 characters.")
         if password != confirmation:
