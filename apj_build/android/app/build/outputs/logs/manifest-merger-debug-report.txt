@@ -1,0 +1,59 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:1:1-8:12
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:1:1-8:12
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:1:1-8:12
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:1:1-8:12
+	package
+		INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:2:2-63
+	android:name
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:2:19-61
+application
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:2-7:16
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:2-7:16
+	android:extractNativeLibs
+		INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+	android:supportsRtl
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:146-172
+	android:label
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:48-80
+	android:allowBackup
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:118-145
+	android:theme
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:15-47
+	android:usesCleartextTraffic
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:81-117
+activity#com.apj.teacher.MainActivity
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:3-6:14
+	android:screenOrientation
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:42-78
+	android:exported
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:79-102
+	android:name
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:4-145
+action#android.intent.action.MAIN
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:19-70
+	android:name
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:27-68
+category#android.intent.category.LAUNCHER
+ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:70-129
+	android:name
+		ADDED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:80-127
+uses-sdk
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml

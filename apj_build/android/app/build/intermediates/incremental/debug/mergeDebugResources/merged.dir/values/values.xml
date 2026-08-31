@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="apj_blue">#1565C0</color>
+    <string name="app_name">APJ શિક્ષક</string>
+    <style name="Theme.APJ" parent="android:style/Theme.Material.Light.NoActionBar"><item name="android:fontFamily">sans</item><item name="android:colorAccent">#1565C0</item><item name="android:navigationBarColor">#000000</item></style>
+</resources>

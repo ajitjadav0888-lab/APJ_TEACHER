@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "qcleGlS7w9EWtXHU1GwDv"
+uri = "file://apj_build/android/app/build/outputs/apk/debug/app-debug.apk"
+type = "unspecified"
+title = "APJ Teacher DEBUG APK"
+description = "Debug APK with the live HTTPS API connection fix, native HTTPS bridge, exact API base URL, /health check, and corrected numeric user_id login payload."
+logical_id = "6c024b3a-56a3-4680-be3e-800dcddaa792"
+content_hash = "sha256:88c372eec08589c76c833e72d583888db4fef4a498e11e646a8af9395fb913bb"
+size = 15251
+mtime_ms = 1788141180854
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/repl:53c958ee-1d90-4194-97d2-c707ff32e6b7/6c024b3a-56a3-4680-be3e-800dcddaa792/09779381-9180-4c77-81fe-9f4bbe42364f"
+storage_version_token = "1788141194318336"
+content_type = "application/octet-stream"

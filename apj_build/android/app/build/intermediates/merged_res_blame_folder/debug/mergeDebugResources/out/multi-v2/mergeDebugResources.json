@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.apj.teacher.app-debug-4:/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/runner/workspace/apj_build/android/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "0",
+                        "startColumns": "11",
+                        "startOffsets": "11",
+                        "endColumns": "49",
+                        "endOffsets": "49"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "42",
+                        "endOffsets": "93"
+                    }
+                },
+                {
+                    "source": "/home/runner/workspace/apj_build/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "0",
+                        "startColumns": "11",
+                        "startOffsets": "11",
+                        "endColumns": "54",
+                        "endOffsets": "54"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "98",
+                        "endColumns": "47",
+                        "endOffsets": "141"
+                    }
+                },
+                {
+                    "source": "/home/runner/workspace/apj_build/android/app/src/main/res/values/themes.xml",
+                    "from": {
+                        "startLines": "0",
+                        "startColumns": "11",
+                        "startOffsets": "11",
+                        "endColumns": "243",
+                        "endOffsets": "243"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "146",
+                        "endColumns": "236",
+                        "endOffsets": "378"
+                    }
+                }
+            ]
+        }
+    ]
+}

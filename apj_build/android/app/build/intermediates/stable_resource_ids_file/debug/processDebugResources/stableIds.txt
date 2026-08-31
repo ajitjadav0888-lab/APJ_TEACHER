@@ -1,0 +1,3 @@
+com.apj.teacher:style/Theme.APJ = 0x7f030000
+com.apj.teacher:string/app_name = 0x7f020000
+com.apj.teacher:color/apj_blue = 0x7f010000

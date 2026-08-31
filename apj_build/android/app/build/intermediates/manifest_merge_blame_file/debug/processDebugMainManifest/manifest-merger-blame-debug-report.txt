@@ -1,0 +1,50 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.apj.teacher"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:2:2-63
+11-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:2:19-61
+12
+13    <application
+13-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:2-7:16
+14        android:allowBackup="false"
+14-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:118-145
+15        android:debuggable="true"
+16        android:extractNativeLibs="false"
+17        android:label="@string/app_name"
+17-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:48-80
+18        android:supportsRtl="true"
+18-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:146-172
+19        android:theme="@style/Theme.APJ"
+19-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:15-47
+20        android:usesCleartextTraffic="false" >
+20-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:3:81-117
+21        <activity
+21-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:3-6:14
+22            android:name="com.apj.teacher.MainActivity"
+22-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:13-41
+23            android:exported="true"
+23-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:79-102
+24            android:screenOrientation="portrait" >
+24-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:4:42-78
+25            <intent-filter>
+25-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:4-145
+26                <action android:name="android.intent.action.MAIN" />
+26-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:19-70
+26-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:27-68
+27
+28                <category android:name="android.intent.category.LAUNCHER" />
+28-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:70-129
+28-->/home/runner/workspace/apj_build/android/app/src/main/AndroidManifest.xml:5:80-127
+29            </intent-filter>
+30        </activity>
+31    </application>
+32
+33</manifest>
