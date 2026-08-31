@@ -1,9 +1,11 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker, Session, relationship
 from pydantic import BaseModel
 import os
+from pathlib import Path
 
 DATABASE_URL = os.getenv("APJ_DATABASE_URL", "sqlite:///./apj.db")
 engine_kwargs = {}
@@ -100,6 +102,17 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "healthy", "database": "connected"}
+
+@app.get("/download/apj-teacher-debug.apk", include_in_schema=False)
+def download_debug_apk():
+    apk_path = Path(__file__).resolve().parents[2] / "APJ-Teacher-debug.apk"
+    if not apk_path.is_file():
+        raise HTTPException(404, "DEBUG APK is not available")
+    return FileResponse(
+        apk_path,
+        media_type="application/vnd.android.package-archive",
+        filename="APJ-Teacher-debug.apk",
+    )
 
 @app.post("/schools")
 def create_school(data: SchoolIn, session: Session = Depends(db), user=Depends(require_roles('SUPER_ADMIN'))):
