@@ -72,7 +72,6 @@ def db():
     finally:
         session.close()
 
-from auth import AuthCredential
 Base.metadata.create_all(bind=engine)
 
 from auth_api import router as auth_router

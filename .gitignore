@@ -54,3 +54,7 @@ __pycache__/
 .pythonlibs/
 *.db
 .env
+
+# Generated Android APKs
+*.apk
+APJ-debug-APK/

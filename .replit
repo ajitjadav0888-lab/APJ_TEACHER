@@ -23,4 +23,4 @@ timeoutMs = 20000
 
 [nix]
 channel = "stable-25_05"
-packages = ["android-tools", "gradle", "libxcrypt"]
+packages = ["android-tools", "gradle", "libxcrypt", "apksigner"]
