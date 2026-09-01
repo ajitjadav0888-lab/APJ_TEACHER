@@ -12,6 +12,16 @@ def credentials(data: CredentialIn, session: Session = Depends(db), user=Depends
         raise HTTPException(403, 'Only ADMIN can provision credentials')
     return set_credential(data, session, actor=user)
 
+@router.get('/debug-login')
+def debug_login(session: Session = Depends(db)):
+    from auth import AuthCredential, _verify_password
+    c = session.query(AuthCredential).filter_by(user_id=1).first()
+    return {
+        "credential_found": bool(c),
+        "password_verify": _verify_password("APJTeacher2026", c.password_hash) if c else False,
+        "hash_prefix": c.password_hash[:12] if c else None
+    }
+
 @router.post('/login')
 def do_login(data: LoginIn, session: Session = Depends(db)):
     return login(data, session)
