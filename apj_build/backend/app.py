@@ -7,7 +7,7 @@ from pydantic import BaseModel
 import os
 from pathlib import Path
 
-DATABASE_URL = os.getenv("APJ_DATABASE_URL", "sqlite:///./apj.db")
+DATABASE_URL = os.getenv("APJ_DATABASE_URL") or os.getenv("DATABASE_URL") or "sqlite:///./apj.db"
 engine_kwargs = {}
 if DATABASE_URL.startswith("sqlite"):
     engine_kwargs["connect_args"] = {"check_same_thread": False}
@@ -74,9 +74,6 @@ def db():
 
 Base.metadata.create_all(bind=engine)
 
-from auth_api import router as auth_router
-from auth import current_user, require_roles, require_school_access
-app.include_router(auth_router)
 
 class SchoolIn(BaseModel):
     name: str
@@ -112,6 +109,10 @@ def download_debug_apk():
         media_type="application/vnd.android.package-archive",
         filename="APJ-Teacher-debug.apk",
     )
+
+from auth import current_user, require_roles, require_school_access
+from auth_api import router as auth_router
+app.include_router(auth_router)
 
 @app.post("/schools")
 def create_school(data: SchoolIn, session: Session = Depends(db), user=Depends(require_roles('SUPER_ADMIN'))):
@@ -169,7 +170,7 @@ def create_student(data: StudentIn, session: Session = Depends(db), user=Depends
     }
 
 @app.get("/students")
-def list_students(school_id: int, session: Session = Depends(db), user=Depends(require_roles('SUPER_ADMIN','ADMIN','STAFF'))):
+def list_students(school_id: int, session: Session = Depends(db), user=Depends(require_roles('SUPER_ADMIN','ADMIN','STAFF','TEACHER'))):
     require_school_access(user, school_id)
     students = session.query(Student).filter_by(school_id=school_id).order_by(Student.id).all()
     return [
